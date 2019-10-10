@@ -1,0 +1,15 @@
+{
+  "action": "query",
+  "target": {
+    "x_acme:features": {
+      "features": [
+        "versions"
+      ]
+    },
+    "x_mycompany:features": {
+      "features": [
+        "servers"
+      ]
+    }
+  }
+}
