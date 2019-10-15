@@ -118,10 +118,10 @@ class Extension_UseCases(SetupTests):
             "status_text": "host1.company.com contained"
         }
 
-        self.validate(cmd, self.cmd_exp)
+        self.validate_as(cmd, self.cmd_exp)
 
         # TODO: Get response
-        # self.validate(rsp, self.rsp_exp)
+        # self.validate_as(rsp, self.rsp_exp)
 
     def test_phantom_endpoint_stop_process_by_pid(self):
         """
@@ -148,10 +148,10 @@ class Extension_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
         # TODO: Get response
-        # self.validate(rsp, self.rsp_exp)
+        # self.validate_as(rsp, self.rsp_exp)
 
     def test_phantom_endpoint_delete_file(self):
         """
@@ -178,10 +178,10 @@ class Extension_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
         # TODO: Get response
-        # self.validate(rsp, self.rsp_exp)
+        # self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_allow_device(self):
         """
@@ -217,8 +217,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_allow_file(self):
         """
@@ -257,8 +257,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_allow_url(self):
         """
@@ -286,8 +286,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_contain_device(self):
         """
@@ -317,8 +317,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_copy_file(self):
         """
@@ -362,9 +362,9 @@ class Extension_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_delete_device(self):
         """
@@ -394,8 +394,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_delete_file(self):
         """
@@ -441,9 +441,9 @@ class Extension_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_deny_file(self):
         """
@@ -482,8 +482,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_deny_process(self):
         """
@@ -514,8 +514,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_investigate_device(self):
         """
@@ -556,9 +556,9 @@ class Extension_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_locate_process(self):
         """
@@ -589,8 +589,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_query_device(self):
         """
@@ -620,8 +620,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_query_file(self):
         """
@@ -668,9 +668,9 @@ class Extension_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_query_software(self):
         """
@@ -704,9 +704,9 @@ class Extension_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_remediate_file(self):
         """
@@ -753,9 +753,9 @@ class Extension_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_restart_device(self):
         """
@@ -798,9 +798,9 @@ class Extension_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_restart_process(self):
         """
@@ -830,8 +830,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_start_process(self):
         """
@@ -861,8 +861,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_stop_process(self):
         """
@@ -907,9 +907,9 @@ class Extension_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_update_device(self):
         """
@@ -945,8 +945,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_endpoint_update_software(self):
         """
@@ -980,9 +980,9 @@ class Extension_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_network_proxy_deny_url(self):
         """
@@ -1010,8 +1010,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_network_proxy_query_url(self):
         """
@@ -1039,8 +1039,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_openc2_cancel_command(self):
         """
@@ -1063,8 +1063,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_process_anti_virus_scanner_locate_directory(self):
         """
@@ -1104,9 +1104,9 @@ class Extension_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_process_anti_virus_scanner_locate_file(self):
         """
@@ -1149,9 +1149,9 @@ class Extension_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_process_anti_virus_scanner_locate_windows_registry_key(self):
         """
@@ -1191,9 +1191,9 @@ class Extension_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_process_anti_virus_scanner_restore_file(self):
         """
@@ -1232,8 +1232,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_process_anti_virus_scanner_scan_file(self):
         """
@@ -1274,9 +1274,9 @@ class Extension_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_process_email_service_deny_email_addr(self):
         """
@@ -1304,8 +1304,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_process_email_service_deny_email_message(self):
         """
@@ -1340,9 +1340,9 @@ class Extension_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_process_sandbox_detonate_file(self):
         """
@@ -1381,8 +1381,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_symantex_process_sandbox_detonate_url(self):
         """
@@ -1410,5 +1410,5 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)

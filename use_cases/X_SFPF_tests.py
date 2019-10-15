@@ -1,5 +1,5 @@
 """
-OpenC2 Trend Micro: File Anti-malware Custom Profile (FAM) Use Case Command/Response Pairs
+OpenC2 U. of Oslo: Stateful Packet Filtering Custom Profile Use Case Command/Response Pairs Template
 """
 import unittest
 
@@ -7,11 +7,11 @@ from jsonschema.exceptions import ValidationError
 from .test_setup import SetupTests
 from .utils import check_profiles_skip, load_cases
 
-profile = "X_FAM"
+profile = "X_SFPF"
 
 
 @unittest.skipIf(check_profiles_skip(profile), f"{profile} Profile tests not specified")
-class FAM_UseCases(SetupTests):
+class X_SFPF_UseCases(SetupTests):
     # Dynamic Validation Variables
     profile = profile
     # good_commands = load_cases(profile, "commands-good")

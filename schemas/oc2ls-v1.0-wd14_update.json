@@ -741,7 +741,7 @@
       "type": "string",
       "description": "A short identifier that refers to a namespace",
       "minLength": 1,
-      "maxLength": 16
+      "maxLength": 32
     },
     "Payload": {
       "title": "Payload",

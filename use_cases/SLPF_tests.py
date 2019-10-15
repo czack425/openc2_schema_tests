@@ -4,7 +4,6 @@ OpenC2 Stateless Packet Filtering Profile (SLPF) Use Case Command/Response Pairs
 import unittest
 
 from jsonschema.exceptions import ValidationError
-from parameterized import parameterized
 from .test_setup import SetupTests
 from .utils import check_profiles_skip, load_cases
 
@@ -13,33 +12,8 @@ profile = "SLPF"
 
 @unittest.skipIf(check_profiles_skip(profile), f"{profile} Profile tests not specified")
 class SLPF_UseCases(SetupTests):
-    good_commands = load_cases(profile, "commands-good")
-    bad_commands = load_cases(profile, "commands-bad")
-    good_responses = load_cases(profile, "response-good")
-    bad_responses = load_cases(profile, "response-bad")
-
-    # Dynamic Validation Functions
-    @unittest.skipIf(good_commands == [], f"{profile}: no good command test cases")
-    @parameterized.expand(load_cases(profile, "commands-good"), skip_on_empty=True)
-    def test_good_commands(self, name, msg):
-        self.validate(msg, self.cmd_exp)
-
-    @unittest.skipIf(bad_commands == [], f"{profile}: no bad command test cases")
-    @parameterized.expand(load_cases(profile, "commands-bad"), skip_on_empty=True)
-    def test_bad_commands(self, name, msg):
-        with self.assertRaises(ValidationError):
-            self.validate(msg, self.cmd_exp)
-
-    @unittest.skipIf(good_responses == [], f"{profile}: no good response test cases")
-    @parameterized.expand(load_cases(profile, "response-good"), skip_on_empty=True)
-    def test_good_response(self, name, msg):
-        self.validate(msg, self.cmd_exp)
-
-    @unittest.skipIf(bad_responses == [], f"{profile}: no bad response test cases")
-    @parameterized.expand(load_cases(profile, "response-bad"), skip_on_empty=True)
-    def test_bad_response(self, name, msg):
-        with self.assertRaises(ValidationError):
-            self.validate(msg, self.cmd_exp)
+    # Dynamic Validation Variables
+    profile = profile
 
     # Static Validation Functions
     def test_att_allow_slpf(self):
@@ -78,8 +52,8 @@ class SLPF_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_att_deny_slpf(self):
         """
@@ -118,5 +92,5 @@ class SLPF_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)

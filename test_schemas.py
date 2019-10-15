@@ -11,21 +11,19 @@ from use_cases import create_test_suite, test_setup, utils
 # Exit on first fail/error or show all fails/errors after all tests
 exitOnFail = False
 
-# GitHub API Token for extra test cases from Brian Berliner - https://github.com/bberliner/openc2-json-schema
-# os.environ["GitHubToken"] = ...
-
 os.environ["testProfiles"] = ",".join([
     # Add profiles to test here
     "Language",
-    "Extension",
-    "General",
-    "SLPF",
-    "SFPF",
-    "Route",
-    "X_ICDX",
-    "X_SEPM",
-    "X_FAM",
-    "X_EGAS",
+    # "Extension",
+    # "General",
+    # "SLPF",
+    # No tests for the following profiles
+    # "SFPF",
+    # "Route",
+    # "X_ICDX",
+    # "X_SEPM",
+    # "X_FAM",
+    # "X_EGAS",
     # "X_SFPF",
     # "X_Route",
 ])
@@ -36,12 +34,12 @@ schema_dir = os.path.join(file_dir, "schemas")
 
 schemas = dict(
     # SCHEMA_NAME=(SCHEMA_FILE, COMMAND_RECORD, RESPONSE_RECORD),
-    oc2ls_wd14=(f"{schema_dir}/oc2ls-v1.0-wd14.json", "openc2_command", "openc2_response"),
-    oc2ls_wd14_reorg=f"{schema_dir}/oc2ls-v1.0-wd14_reorg.json",
+    # oc2ls_wd14=(f"{schema_dir}/oc2ls-v1.0-wd14.json", "openc2_command", "openc2_response"),
+    # oc2ls_wd14_reorg=f"{schema_dir}/oc2ls-v1.0-wd14_reorg.json",
     oc2ls_wd14_update=f"{schema_dir}/oc2ls-v1.0-wd14_update.json",
-    romano=f"{schema_dir}/romanojd/message.json",
-    bberliner=f"{schema_dir}/bberliner/combined_schema.json",
-    dkemp=f"{schema_dir}/oc2ls-v1.0-csprd03_dk.json",
+    # romano=f"{schema_dir}/romanojd/message.json",
+    # bberliner=f"{schema_dir}/bberliner/combined_schema.json",
+    # dkemp=f"{schema_dir}/oc2ls-v1.0-csprd03_dk.json",
     lang_gen=f"{schema_dir}/oc2ls-v1.1-lang_gen.json",
     # slpf_gen=f"{schema_dir}/oc2slpf-v1.0-refs_gen.json",
 )
@@ -76,7 +74,7 @@ if __name__ == "__main__":
 
         with open(f"{log_dir}/{name}.log", "w") as test_log:
             testSuite = create_test_suite()
-            profile_tests = os.getenv("testProfiles", "")
+            profile_tests = os.getenv("unknownProfiles", "")
             if profile_tests:
                 console.warn(f"Unknown profile tests specified: {', '.join(profile_tests.split(','))}")
 

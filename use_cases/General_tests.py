@@ -29,8 +29,8 @@ class General_UseCases(SetupTests):
             "status_text": "host1.company.com uncontained"
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_att_contain_domain_name(self):
         """
@@ -51,8 +51,8 @@ class General_UseCases(SetupTests):
             "status_text": "host1.company.com contained"
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_att_copy_domain_name(self):
         """
@@ -75,10 +75,10 @@ class General_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
         # TODO: get response
-        # self.validate(rsp, self.rsp_exp)
+        # self.validate_as(rsp, self.rsp_exp)
 
     def test_att_locate_ip_addr(self):
         """
@@ -112,10 +112,10 @@ class General_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
         with self.assertRaises(ValidationError):
-            self.validate(rsp, self.rsp_exp)
+            self.validate_as(rsp, self.rsp_exp)
 
     def test_dod_scan_file(self):
         """
@@ -140,8 +140,8 @@ class General_UseCases(SetupTests):
             "status": 102
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_phantom_endpoint_list_processes(self):
         """
@@ -161,7 +161,7 @@ class General_UseCases(SetupTests):
         }
 
         with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
 
         # TODO: Get response
-        # self.validate(rsp, self.rsp_exp)
+        # self.validate_as(rsp, self.rsp_exp)

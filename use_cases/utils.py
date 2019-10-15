@@ -10,7 +10,11 @@ import sys
 
 from jsonschema import RefResolver
 from jsonschema.compat import urldefrag
-from typing import Any
+from typing import (
+    Any,
+    Callable,
+    Dict
+)
 
 dynamic_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "dynamic_cases"))
 
@@ -18,13 +22,39 @@ dynamic_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "dynamic_c
 def check_profiles_skip(*profiles: str) -> bool:
     profiles = list(map(str.lower, profiles))
     profiles_orig = os.getenv("testProfiles", "").split(",")
+    profiles_unknown = os.environ.setdefault("unknownProfiles", ",".join(profiles_orig)).split(",")
     profiles_lower = list(map(str.lower, profiles_orig))
 
     if len({*profiles} - {*profiles_lower}) == 0:
         matches = list(map(profiles_orig.pop, list(map(profiles_lower.index, profiles))))
-        os.environ["testProfiles"] = ",".join(profiles_orig)
+        os.environ["unknownProfiles"] = ",".join([p for p in profiles_unknown if p not in matches])
         return False
     return True
+
+
+def clean_var_name(var: str) -> str:
+    # Remove invalid characters
+    var = re.sub('[^0-9a-zA-Z_]', '', var)
+    # Remove leading characters until a letter or underscore
+    var = re.sub('^[^a-zA-Z_]+', '', var)
+    return var
+
+
+def load_cases(profile: str) -> Dict[str, Any]:
+    profile = profile.lower()
+    cases = ("commands-good", "commands-bad", "responses-good", "responses-bad")
+    dynamic_cases = {}
+
+    for case in cases:
+        case_path = os.path.join(dynamic_dir, profile, case)
+        case = "_".join(reversed(case.split("-")))
+        if os.path.isdir(case_path):
+            dynamic_cases[case] = {}
+            for f in os.listdir(case_path):
+                if f.endswith(".json"):
+                    dynamic_cases[case][os.path.splitext(f)[0]] = safe_load(os.path.join(case_path, f))
+
+    return dynamic_cases
 
 
 def safe_load(msg_file) -> dict:
@@ -35,15 +65,13 @@ def safe_load(msg_file) -> dict:
             return {}
 
 
-def load_cases(profile: str, case: str) -> list:
-    cases = []
-    case_path = os.path.join(dynamic_dir, profile.lower(), case)
-    if os.path.isdir(case_path):
-        cases = [(
-            os.path.splitext(f)[0],
-            safe_load(os.path.join(case_path, f))
-        ) for f in os.listdir(case_path) if f.endswith(".json")]
-    return cases
+def short_exception(fun) -> Callable:
+    def wrapper(*args, **kwargs):
+        try:
+            return fun(*args, **kwargs)
+        except Exception as e:
+            raise e.__class__(getattr(e, "message", str(e)))
+    return wrapper
 
 
 class ExtendedResolver(RefResolver):
