@@ -2,7 +2,7 @@
   "status": 201,
   "status_text": "Some description",
   "results": {
-    "x_mycompany": {
+    "x-mycompany": {
       "stuff": {
         "some": 100,
         "values": [
@@ -12,7 +12,7 @@
         "defined": "by the profile docs"
       }
     },
-    "x_acme": {
+    "x-acme": {
       "status_detail": "this profile defines additional status info for each response"
     }
   }

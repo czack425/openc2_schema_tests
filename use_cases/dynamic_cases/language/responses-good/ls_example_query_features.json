@@ -1,8 +1,13 @@
 {
   "status": 200,
   "results": {
-    "versions": ["1.0"],
-    "profiles": ["http://oasis-open.org/openc2/oc2slpf/v1.0", "http://oasis-open.org/openc2/cap/iot_doorlock/v1.0"],
+    "versions": [
+      "1.0"
+    ],
+    "profiles": [
+      "slpf",
+      "x-iot_doorlock"
+    ],
     "rate_limit": 30
   }
 }

@@ -6,6 +6,7 @@ import unittest
 
 from argparse import Namespace
 from datetime import datetime
+from io import StringIO
 from use_cases import create_test_suite, test_setup, utils
 
 # Exit on first fail/error or show all fails/errors after all tests
@@ -55,6 +56,11 @@ def default_namespace(v) -> Namespace:
     return Namespace(**data)
 
 
+def format_result(pre: str, count: int, total: int) -> str:
+    percent = f"{(count/total)*100:.0f}%"
+    return f"{pre} {count:,}/{total:,} ({percent}) tests"
+
+
 if __name__ == "__main__":
     now = datetime.now()
     # console = utils.ConsoleStyle(True, f"{log_dir}/schema_tests_{now:%Y.%m.%d_%H.%M.%S}.log")
@@ -63,6 +69,8 @@ if __name__ == "__main__":
     console.h1(f"Testing OpenC2 Schema - {now:%Y %B %d}")
     if not os.path.isdir(log_dir):
         os.mkdir(log_dir)
+
+    ignore = ["errors", "skipped", ]
 
     for name, info in schemas.items():
         console.h2(f"Running unittests against {name} schema, logfile -> ./logs/{name}.log")
@@ -78,4 +86,12 @@ if __name__ == "__main__":
             if profile_tests:
                 console.warn(f"Unknown profile tests specified: {', '.join(profile_tests.split(','))}")
 
-            unittest.TextTestRunner(stream=test_log, failfast=exitOnFail).run(testSuite)
+            tests = unittest.TextTestRunner(stream=test_log, failfast=exitOnFail).run(testSuite)
+            testsRun = tests.testsRun-len(tests.skipped)
+
+            console.info(format_result("Ran", tests.testsRun-len(tests.skipped), tests.testsRun))
+            console.warn(format_result("Skipped", len(tests.skipped), tests.testsRun))
+            console.error(format_result("Error", len(tests.errors), testsRun))
+            console.error(format_result("Failure", len(tests.failures), testsRun))
+            passed = testsRun - ( + len(tests.failures) + len(tests.errors))
+            console.success(format_result("Passed", passed, testsRun))

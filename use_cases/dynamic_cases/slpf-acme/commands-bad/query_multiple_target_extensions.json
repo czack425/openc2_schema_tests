@@ -1,12 +1,12 @@
 {
   "action": "query",
   "target": {
-    "x_acme:features": {
+    "x-acme:features": {
       "features": [
         "versions"
       ]
     },
-    "x_mycompany:features": {
+    "x-mycompany:features": {
       "features": [
         "servers"
       ]

@@ -15,7 +15,7 @@ from typing import (
     Tuple
 )
 
-from .utils import clean_var_name, load_cases, short_exception, ExtendedResolver
+from .utils import clean_var_name, load_cases, ExtendedResolver
 
 
 class TestMeta(ABCMeta):
@@ -74,7 +74,6 @@ class SetupTests(unittest.TestCase, metaclass=TestMeta):
 
         return schema, resolver
 
-    @short_exception
     def validate(self, msg: Any):
         """
         Validate as generic instance against the schema
@@ -88,7 +87,6 @@ class SetupTests(unittest.TestCase, metaclass=TestMeta):
         )
         return validator.validate(msg)
 
-    @short_exception
     def validate_as(self, msg: Any, _type: str):
         """
         Validate as specified instance against the schema

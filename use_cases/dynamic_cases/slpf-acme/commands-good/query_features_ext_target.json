@@ -1,9 +1,11 @@
 {
   "action": "query",
   "target": {
-    "x_acme:features": {
+    "x-acme:features": {
       "features": [
-        "versions", "profiles", "schema"
+        "versions",
+        "profiles",
+        "schema"
       ]
     }
   }

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "http://oasis-open.org/openc2/oc2ls/v1.0/schema.json",
-  "title": "oc2ls version 1.0 json schema",
+  "$id": "http://oasis-open.org/openc2/oc2ls/v1.01/schema.json",
+  "title": "oc2ls version 1.01 json schema",
   "type": "object",
   "description": "This schema is intended to validate all possible derived content for the OpenC2 Language Specification version 1.0. It is meant to be used as a template that can be more strictly tuned when creating actuator profile specific schema",
   "oneOf": [
@@ -391,11 +391,13 @@
       "patternProperties": {
         "^slpf$": {
           "type": "object",
-          "description": "Language specification validator for committee approved results extensions. In practice results extension should be a static property and this catch all should be removed"
+          "description": "Language specification validator for committee approved results extensions. In practice results extension should be a static property and this catch all should be removed",
+          "minProperties": 1
         },
         "^x-[A-Za-z0-9]\\w+$": {
           "type": "object",
-          "description": "Language specification validator for custom results extensions. In practice results extension should be a static property and this catch all should be removed"
+          "description": "Language specification validator for custom results extensions. In practice results extension should be a static property and this catch all should be removed",
+          "minProperties": 1
         }
       }
     },
@@ -633,28 +635,32 @@
       "additionalProperties": false,
       "minProperties": 1,
       "patternProperties": {
-        "^(allow|cancel|contain|copy|create|delete|deny|detonate|investigate|locate|query|redirect|remediate|restart|restore|scan|set|start|stop|update)$": {
-          "type": "array",
-          "description": "List of Target fields, should be narrowed in practice",
-          "uniqueItems": true,
-          "minItems": 1,
-          "items": {
-            "type": "string",
-            "pattern": "^(artifact|command|device|domain_name|(email|mac)_addr|features|file|idn_(domain_name|email_addr)|ipv[46]_(connection|net)|[iu]ri|process|properties|(x-[A-Za-z0-9]\\w+|slpf):[A-Za-z0-9]\\w+)$"
-          }
+        "^(scan|locate|query|deny|contain|allow|start|stop|restart|cancel|set|update|redirect|create|delete|detonate|restore|copy|investigate|remediate)$": {
+          "$ref": "#/definitions/Targets"
         }
+      }
+    },
+    "Targets": {
+      "title": "Targets",
+      "type": "array",
+      "description": "List of Target fields, should be narrowed in practice",
+      "uniqueItems": true,
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^(artifact|command|device|domain_name|email_addr|features|file|idn_domain_name|idn_email_addr|ipv4_net|ipv6_net|ipv4_connection|ipv6_connection|iri|mac_addr|process|properties|uri|(x-[A-Za-z0-9]\\w+|slpf):[A-Za-z0-9]\\w+)$"
       }
     },
     "Date-Time": {
       "title": "Date Time",
       "type": "integer",
-      "description": "Date and Time - milliseconds since 00:00:00 UTC, 1 January 1970",
+      "description": "Date and Time",
       "minimum": 0
     },
     "Duration": {
       "title": "Duration",
       "type": "integer",
-      "description": "A length of time - number of milliseconds",
+      "description": "A length of time",
       "minimum": 0
     },
     "Feature": {
@@ -741,7 +747,7 @@
       "type": "string",
       "description": "A short identifier that refers to a namespace",
       "minLength": 1,
-      "maxLength": 32
+      "maxLength": 16
     },
     "Payload": {
       "title": "Payload",
@@ -793,16 +799,16 @@
       "title": "Version",
       "type": "string",
       "description": "Major.Minor version number",
-      "pattern": "^\\d{1,2}\\.\\d{1,4}$"
+      "pattern": "^\\d+\\.\\d+(\\.\\d+)?$"
+    },
+    "Command-ID": {
+      "title": "Command Identifier",
+      "type": "string"
     },
     "Binary": {
       "title": "Binary",
       "type": "string",
       "contentEncoding": "base64"
-    },
-    "Command-ID": {
-      "title": "Command Identifier",
-      "type": "string"
     }
   }
 }

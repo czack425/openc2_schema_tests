@@ -33,8 +33,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_dod_cancel_command(self):
         """
@@ -56,8 +56,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_dod_properties(self):
         """
@@ -88,8 +88,8 @@ class Extension_UseCases(SetupTests):
             }
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
 
     def test_phantom_endpoint_deny_process_with_hash(self):
         """

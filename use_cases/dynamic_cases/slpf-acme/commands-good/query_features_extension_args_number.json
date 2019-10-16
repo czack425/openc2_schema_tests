@@ -1,10 +1,15 @@
 {
   "action": "query",
   "target": {
-    "features": [ "profiles", "versions", "pairs", "rate_limit" ]
+    "features": [
+      "profiles",
+      "versions",
+      "pairs",
+      "rate_limit"
+    ]
   },
   "args": {
-    "x_395": {
+    "x-395": {
       "debug_logging": true
     }
   }

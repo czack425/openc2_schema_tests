@@ -65,7 +65,7 @@ def safe_load(msg_file) -> dict:
             return {}
 
 
-def short_exception(fun) -> Callable:
+def short_exception(fun: Callable) -> Callable:
     def wrapper(*args, **kwargs):
         try:
             return fun(*args, **kwargs)
@@ -279,16 +279,16 @@ class ConsoleStyle:
         print(self.colorize(txt, "FG_WHITE"))
 
     def info(self, txt):
-        print(self.colorize(f"> {txt}",  "FG_WHITE"))
+        print(self.colorize(f"* {txt}",  "FG_WHITE"))
 
     def success(self, txt):
-        print(self.colorize(txt, "FG_GREEN"))
+        print(self.colorize(f"+ {txt}", "FG_GREEN"))
 
     def error(self, txt):
         print(self.colorize(f"x {txt}", "FG_RED"))
 
     def warn(self, txt):
-        print(self.colorize(f"-> {txt}", "FG_YELLOW"))
+        print(self.colorize(f"> {txt}", "FG_YELLOW"))
 
     def bold(self, txt):
         print(self.colorize(txt, "BOLD"))

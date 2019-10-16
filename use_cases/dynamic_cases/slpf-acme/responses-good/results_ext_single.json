@@ -2,7 +2,7 @@
   "status": 201,
   "status_text": "Some description",
   "results": {
-    "x_mycompany": {
+    "x-mycompany": {
       "stuff": {
         "some": 100,
         "values": [ true, false ],
