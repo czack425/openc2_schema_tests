@@ -4,16 +4,15 @@
   "title": "Stateless Packet Filtering Profile",
   "description": "Data definitions for Stateless Packet Filtering (SLPF) functions",
   "type": "object",
-  "oneOf": [
-    {
-      "title": "openc2_command",
+  "additionalProperties": false,
+  "properties": {
+    "openc2_command": {
       "$ref": "#/definitions/OpenC2-Command"
     },
-    {
-      "title": "openc2_response",
+    "openc2_response": {
       "$ref": "#/definitions/OpenC2-Response"
     }
-  ],
+  },
   "definitions": {
     "OpenC2-Command": {
       "title": "OpenC2 Command",

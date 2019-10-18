@@ -6,28 +6,18 @@ import unittest
 
 from argparse import Namespace
 from datetime import datetime
-from io import StringIO
 from use_cases import create_test_suite, test_setup, utils
 
 # Exit on first fail/error or show all fails/errors after all tests
 exitOnFail = False
 
-os.environ["testProfiles"] = ",".join([
+profiles = [
     # Add profiles to test here
     "Language",
-    # "Extension",
-    # "General",
-    # "SLPF",
-    # No tests for the following profiles
-    # "SFPF",
-    # "Route",
-    # "X_ICDX",
-    # "X_SEPM",
-    # "X_FAM",
-    # "X_EGAS",
-    # "X_SFPF",
-    # "X_Route",
-])
+    "Extension",
+    "General",
+    "SLPF",
+]
 
 file_dir = os.path.dirname(os.path.realpath(__file__))
 log_dir = os.path.join(file_dir, "logs")
@@ -36,13 +26,13 @@ schema_dir = os.path.join(file_dir, "schemas")
 schemas = dict(
     # SCHEMA_NAME=(SCHEMA_FILE, COMMAND_RECORD, RESPONSE_RECORD),
     # oc2ls_wd14=(f"{schema_dir}/oc2ls-v1.0-wd14.json", "openc2_command", "openc2_response"),
-    # oc2ls_wd14_reorg=f"{schema_dir}/oc2ls-v1.0-wd14_reorg.json",
     oc2ls_wd14_update=f"{schema_dir}/oc2ls-v1.0-wd14_update.json",
     # romano=f"{schema_dir}/romanojd/message.json",
     # bberliner=f"{schema_dir}/bberliner/combined_schema.json",
+    bberliner_gen=(f"{schema_dir}/oc2ls-v1.0.1-bb_gen.json", "openc2_command", "openc2_response"),
     # dkemp=f"{schema_dir}/oc2ls-v1.0-csprd03_dk.json",
-    lang_gen=f"{schema_dir}/oc2ls-v1.1-lang_gen.json",
-    # slpf_gen=f"{schema_dir}/oc2slpf-v1.0-refs_gen.json",
+    lang_gen=(f"{schema_dir}/oc2ls-v1.1-lang_gen.json", "openc2_command", "openc2_response"),
+    # slpf_gen=(f"{schema_dir}/oc2slpf-v1.0-refs_gen.json", "openc2_command", "openc2_response"),
 )
 
 
@@ -57,16 +47,18 @@ def default_namespace(v) -> Namespace:
 
 
 def format_result(pre: str, count: int, total: int) -> str:
-    percent = f"{(count/total)*100:.0f}%"
+    percent = f"{(count/total)*100:.2f}%"
     return f"{pre} {count:,}/{total:,} ({percent}) tests"
 
 
 if __name__ == "__main__":
+    os.environ["testProfiles"] = ",".join(profiles)
     now = datetime.now()
     # console = utils.ConsoleStyle(True, f"{log_dir}/schema_tests_{now:%Y.%m.%d_%H.%M.%S}.log")
     console = utils.ConsoleStyle()
 
     console.h1(f"Testing OpenC2 Schema - {now:%Y %B %d}")
+    console.h2(f"Testing Profiles: {', '.join(profiles)}")
     if not os.path.isdir(log_dir):
         os.mkdir(log_dir)
 

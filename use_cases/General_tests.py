@@ -10,6 +10,10 @@ from .utils import check_profiles_skip
 
 @unittest.skipIf(check_profiles_skip("general"), "General tests not specified")
 class General_UseCases(SetupTests):
+    # Dynamic Validation Variables
+    profile = "language-anything"
+
+    # Static Validation Functions
     def test_att_allow_domain_name(self):
         """
         Allow Domain Name

@@ -9,7 +9,7 @@
     ]
   },
   "args": {
-    "x-mycompany/foo;bar": {
+    "x-mycompany:foo;bar": {
       "debug_logging": true
     }
   }

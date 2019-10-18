@@ -1,7 +1,9 @@
 {
   "action": "query",
   "target": {
-    "properties": ["battery"]
+    "properties": [
+      "battery"
+    ]
   },
   "actuator": {
     "x-esm": {

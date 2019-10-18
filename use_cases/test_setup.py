@@ -15,13 +15,17 @@ from typing import (
     Tuple
 )
 
-from .utils import clean_var_name, load_cases, ExtendedResolver
+from .utils import (
+    clean_var_name,
+    load_cases,
+    ExtendedResolver
+)
 
 
 class TestMeta(ABCMeta):
     def __new__(mcs, name, bases, namespace):
         new_namespace = dict(namespace)
-        profile = new_namespace.pop("profile", None)
+        profile = str(new_namespace.pop("profile", None))
         if profile:
             base_cls = bases[0]
 
@@ -96,19 +100,25 @@ class SetupTests(unittest.TestCase, metaclass=TestMeta):
         :return:
         """
         schema, resolver = self.loadSchema()
-        export = [e for e in schema["oneOf"] if _type == re.sub(r"#/definitions/", "", e.get("$ref", ""))]
-        if export and "oneOf" in schema:
-            tmp_schema = copy.deepcopy(schema)
-            del tmp_schema["oneOf"]
-            tmp_schema.update(export[0])
+        if "properties" in schema:
+            export = schema["properties"].get(_type, None)
+            if export:
+                msg = {_type: msg}
+                return self.validate(msg)
 
-            schema, resolver = self.loadSchema(tmp_schema)
-            validator = Draft7Validator(
-                schema=tmp_schema,
-                resolver=resolver
-            )
-            return validator.validate(msg)
-        raise TypeError(f"{_type} is not a valid oneOf as defined in the schema")
+        elif "oneOf"in schema:
+            export = [e for e in schema["oneOf"] if _type == re.sub(r"#/definitions/", "", e.get("$ref", ""))]
+            if export:
+                tmp_schema = copy.deepcopy(schema)
+                del tmp_schema["oneOf"]
+                tmp_schema.update(export[0])
+
+                schema, resolver = self.loadSchema(tmp_schema)
+                return Draft7Validator(
+                    schema=tmp_schema,
+                    resolver=resolver
+                ).validate(msg)
+        raise TypeError(f"{_type} is not a valid as defined in the schema")
 
     # Dynamic Validation Functions
     def good_command_test(self, msg):

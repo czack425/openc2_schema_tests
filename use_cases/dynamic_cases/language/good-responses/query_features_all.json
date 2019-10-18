@@ -6,7 +6,8 @@
       "1.0"
     ],
     "profiles": [
-      "x-myextension"
+      "slpf",
+      "x-iot_doorlock"
     ],
     "pairs": {
       "query": [

@@ -42,12 +42,12 @@ def clean_var_name(var: str) -> str:
 
 def load_cases(profile: str) -> Dict[str, Any]:
     profile = profile.lower()
-    cases = ("commands-good", "commands-bad", "responses-good", "responses-bad")
+    cases = ("good-commands", "bad-responses", "bad-commands", "good-responses")
     dynamic_cases = {}
 
     for case in cases:
         case_path = os.path.join(dynamic_dir, profile, case)
-        case = "_".join(reversed(case.split("-")))
+        case = case.replace("-", "_")
         if os.path.isdir(case_path):
             dynamic_cases[case] = {}
             for f in os.listdir(case_path):
@@ -269,8 +269,7 @@ class ConsoleStyle:
         print(self.colorize(txt, "UNDERLINE", "BOLD"))
 
     def h1(self, txt):
-        tmp = self.colorize(f"\n{txt}", "UNDERLINE", "BOLD", "FG_CYAN")
-        print(tmp)
+        print(self.colorize(f"\n{txt}", "UNDERLINE", "BOLD", "FG_CYAN"))
 
     def h2(self, txt):
         print(self.colorize(f"\n{txt}", "UNDERLINE", "BOLD", "FG_WHITE"))
@@ -297,7 +296,6 @@ class ConsoleStyle:
         print(f"{self.colorize('Note:', 'UNDERLINE', 'BOLD', 'FG_CYAN')} {self.colorize(txt, 'FG_CYAN')}")
 
     def default(self, txt):
-        txt = self._toStr(txt)
         print(self.colorize(txt))
 
     def verbose(self, style, txt):
