@@ -21,7 +21,7 @@ dynamic_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "dynamic_c
 
 def check_profiles_skip(*profiles: str) -> bool:
     profiles = list(map(str.lower, profiles))
-    profiles_orig = os.getenv("testProfiles", "").split(",")
+    profiles_orig = os.getenv("TestProfiles", "").split(",")
     profiles_unknown = os.environ.setdefault("unknownProfiles", ",".join(profiles_orig)).split(",")
     profiles_lower = list(map(str.lower, profiles_orig))
 
@@ -41,12 +41,16 @@ def clean_var_name(var: str) -> str:
 
 
 def load_cases(profile: str) -> Dict[str, Any]:
+    version = os.getenv("LangVersion", "v1.0")
     profile = profile.lower()
     cases = ("good-commands", "bad-responses", "bad-commands", "good-responses")
     dynamic_cases = {}
 
+    if not os.path.isdir(os.path.join(dynamic_dir, version)):
+        raise NotADirectoryError(f"Language version {version} does not have tests defined")
+
     for case in cases:
-        case_path = os.path.join(dynamic_dir, profile, case)
+        case_path = os.path.join(dynamic_dir, version, profile, case)
         case = case.replace("-", "_")
         if os.path.isdir(case_path):
             dynamic_cases[case] = {}

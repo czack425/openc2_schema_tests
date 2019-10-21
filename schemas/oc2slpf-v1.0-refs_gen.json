@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://oasis-open.org/openc2/oc2slpf/v1.1",
-  "title": "Stateless Packet Filtering Profile",
+  "title": "Stateless Packet Filtering",
   "description": "Data definitions for Stateless Packet Filtering (SLPF) functions",
   "type": "object",
   "additionalProperties": false,
@@ -345,7 +345,6 @@
       "enum": [
         102,
         200,
-        201,
         400,
         401,
         403,

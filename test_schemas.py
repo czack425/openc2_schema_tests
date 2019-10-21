@@ -10,7 +10,8 @@ from use_cases import create_test_suite, test_setup, utils
 
 # Exit on first fail/error or show all fails/errors after all tests
 exitOnFail = False
-
+# Versions should be prefixed as v...
+version = "v1.0"
 profiles = [
     # Add profiles to test here
     "Language",
@@ -26,7 +27,8 @@ schema_dir = os.path.join(file_dir, "schemas")
 schemas = dict(
     # SCHEMA_NAME=(SCHEMA_FILE, COMMAND_RECORD, RESPONSE_RECORD),
     # oc2ls_wd14=(f"{schema_dir}/oc2ls-v1.0-wd14.json", "openc2_command", "openc2_response"),
-    oc2ls_wd14_update=f"{schema_dir}/oc2ls-v1.0-wd14_update.json",
+    oc2ls_v1_0_update=f"{schema_dir}/oc2ls-v1.0-wd14_update.json",
+    # oc2ls_v1_1_update=f"{schema_dir}/oc2ls-v1.1-wd14_update.json",
     # romano=f"{schema_dir}/romanojd/message.json",
     # bberliner=f"{schema_dir}/bberliner/combined_schema.json",
     bberliner_gen=(f"{schema_dir}/oc2ls-v1.0.1-bb_gen.json", "openc2_command", "openc2_response"),
@@ -47,12 +49,13 @@ def default_namespace(v) -> Namespace:
 
 
 def format_result(pre: str, count: int, total: int) -> str:
-    percent = f"{(count/total)*100:.2f}%"
+    percent = f"{(count/total)*100:.2f}%" if total > 0 else f"{0:.2f}%"
     return f"{pre} {count:,}/{total:,} ({percent}) tests"
 
 
 if __name__ == "__main__":
-    os.environ["testProfiles"] = ",".join(profiles)
+    os.environ["LangVersion"] = version
+    os.environ["TestProfiles"] = ",".join(profiles)
     now = datetime.now()
     # console = utils.ConsoleStyle(True, f"{log_dir}/schema_tests_{now:%Y.%m.%d_%H.%M.%S}.log")
     console = utils.ConsoleStyle()

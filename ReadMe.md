@@ -56,8 +56,8 @@
             "status": 200
         }
 
-        self.validate(cmd, self.cmd_exp)
-        self.validate(rsp, self.rsp_exp)
+        self.validate_as(cmd, self.cmd_exp)
+        self.validate_as(rsp, self.rsp_exp)
     ...
 	```
 	
@@ -82,10 +82,10 @@
         }
 
 		 with self.assertRaises(ValidationError):
-            self.validate(cmd, self.cmd_exp)
+            self.validate_as(cmd, self.cmd_exp)
         
         with self.assertRaises(ValidationError):
-	        self.validate(rsp, self.rsp_exp)
+	        self.validate_as(rsp, self.rsp_exp)
     ...
 	```
 
@@ -93,4 +93,6 @@
 ## Notes:
 - Use cases
     - General - [Oasis](https://github.com/oasis-tcs/openc2-usecases)
+        - Current version of tests in latest version folder in `use_cases/dynamic_tests` 
 	    - Some cases updated for adherence to schema changes
+- The code within this repository is not intended to be production ready 
