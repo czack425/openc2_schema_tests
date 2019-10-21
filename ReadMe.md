@@ -26,13 +26,13 @@
 		- Ex) SLPF with non-approved profile Acme, `@unittest.skipIf(check_profiles_skip("SLPF", "Extension"), f"{profile} Profile tests not specified")`
 
 4. Add Dynamic Cases to the `dynamic_cases` folder in a filder named for the lowercase profile name
-	- Ex) SLPF, slpf dynamic cases should be added to `dynamic_cases/slpf`
+	- Ex) SLPF, slpf dynamic cases should be added to `dynamic_cases/VERSION/slpf`
 	
 	- The profile case folder should have four folders with the corresponding test files in each
-		- `dynamic_cases/PROFILE/commands_good` -> Good Commands, should not raise an error
-		- `dynamic_cases/PROFILE/commands_bad` -> Bad Commands, should raise an error
-		- `dynamic_cases/PROFILE/responses_good` -> Good Responses, should not raise an error
-		- `dynamic_cases/PROFILE/responses_bad` -> Bad Responses, should raise an error
+		- `dynamic_cases/VERSION/PROFILE/commands_good` -> Good Commands, should not raise an error
+		- `dynamic_cases/VERSION/PROFILE/commands_bad` -> Bad Commands, should raise an error
+		- `dynamic_cases/VERSION/PROFILE/responses_good` -> Good Responses, should not raise an error
+		- `dynamic_cases/VERSION/PROFILE/responses_bad` -> Bad Responses, should raise an error
 	 
 
 ### Adding Static Tests (Optional)
