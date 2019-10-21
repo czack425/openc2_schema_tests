@@ -25,8 +25,9 @@
 		- This allows the test to __ONLY__ run when the profile (SLPF) and extensions are specified for testing
 		- Ex) SLPF with non-approved profile Acme, `@unittest.skipIf(check_profiles_skip("SLPF", "Extension"), f"{profile} Profile tests not specified")`
 
-4. Add Dynamic Cases to the `dynamic_cases` folder in a filder named for the lowercase profile name
-	- Ex) SLPF, slpf dynamic cases should be added to `dynamic_cases/VERSION/slpf`
+4. Add Dynamic Cases to the `dynamic_cases` folder in the appropriate version  and profile folders
+    - All names should be lowercase
+	- Ex) SLPF v1.0, slpf dynamic cases should be added to `dynamic_cases/v1.0/slpf`
 	
 	- The profile case folder should have four folders with the corresponding test files in each
 		- `dynamic_cases/VERSION/PROFILE/commands_good` -> Good Commands, should not raise an error
