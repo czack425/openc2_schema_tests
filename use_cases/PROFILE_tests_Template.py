@@ -9,9 +9,8 @@ Dynamic test messages will be loaded from `use_cases/dynamic_cases/PROFILE/` wit
 """
 import unittest
 
-from jsonschema.exceptions import ValidationError
-from .test_setup import SetupTests
-from .utils import check_profiles_skip, load_cases
+from .test_setup import SetupTests, ValidationError
+from .utils import check_profiles_skip
 
 profile = "PROFILE"
 

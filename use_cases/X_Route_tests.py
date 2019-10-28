@@ -3,9 +3,8 @@ OpenC2 DoD: Packet Routing Custom Profile Custom Profile Use Case Command/Respon
 """
 import unittest
 
-from jsonschema.exceptions import ValidationError
-from .test_setup import SetupTests
-from .utils import check_profiles_skip, load_cases
+from .test_setup import SetupTests, ValidationError
+from .utils import check_profiles_skip
 
 profile = "X_Route"
 
@@ -14,9 +13,5 @@ profile = "X_Route"
 class X_Route_UseCases(SetupTests):
     # Dynamic Validation Variables
     profile = profile
-    # good_commands = load_cases(profile, "commands-good")
-    # bad_commands = load_cases(profile, "commands-bad")
-    # good_responses = load_cases(profile, "response-good")
-    # bad_responses = load_cases(profile, "response-bad")
 
     # Static Validation Functions

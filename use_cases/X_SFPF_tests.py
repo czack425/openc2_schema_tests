@@ -3,9 +3,8 @@ OpenC2 U. of Oslo: Stateful Packet Filtering Custom Profile Use Case Command/Res
 """
 import unittest
 
-from jsonschema.exceptions import ValidationError
-from .test_setup import SetupTests
-from .utils import check_profiles_skip, load_cases
+from .test_setup import SetupTests, ValidationError
+from .utils import check_profiles_skip
 
 profile = "X_SFPF"
 
@@ -14,9 +13,5 @@ profile = "X_SFPF"
 class X_SFPF_UseCases(SetupTests):
     # Dynamic Validation Variables
     profile = profile
-    # good_commands = load_cases(profile, "commands-good")
-    # bad_commands = load_cases(profile, "commands-bad")
-    # good_responses = load_cases(profile, "response-good")
-    # bad_responses = load_cases(profile, "response-bad")
 
     # Static Validation Functions

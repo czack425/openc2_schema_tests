@@ -269,11 +269,13 @@
       "patternProperties": {
         "^slpf$": {
           "type": "object",
-          "description": "Language specification validator for committee approved actuators. In practice actuators should be a static property and this catch all should be removed"
+          "description": "Language specification validator for committee approved actuators. In practice actuators should be a static property and this catch all should be removed",
+          "minProperties": 1
         },
         "^x-[A-Za-z0-9]\\w+$": {
           "type": "object",
-          "description": "Language specification validator for custom actuators. In practice actuators should be a static property and this catch all should be removed"
+          "description": "Language specification validator for custom actuators. In practice actuators should be a static property and this catch all should be removed",
+          "minProperties": 1
         }
       }
     },
@@ -391,11 +393,13 @@
       "patternProperties": {
         "^slpf$": {
           "type": "object",
-          "description": "Language specification validator for committee approved results extensions. In practice results extension should be a static property and this catch all should be removed"
+          "description": "Language specification validator for committee approved results extensions. In practice results extension should be a static property and this catch all should be removed",
+          "minProperties": 1
         },
         "^x-[A-Za-z0-9]\\w+$": {
           "type": "object",
-          "description": "Language specification validator for custom results extensions. In practice results extension should be a static property and this catch all should be removed"
+          "description": "Language specification validator for custom results extensions. In practice results extension should be a static property and this catch all should be removed",
+          "minProperties": 1
         }
       }
     },

@@ -123,23 +123,22 @@
 
 ### Bad Responses
 
-| File                                       | Changes | Reason | Source                                                   | Note     |
-| ------------------------------------------ | ------- | ------ | -------------------------------------------------------- | -------- |
-| empty.json                                 |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |          |
-| empty\_array.json                          |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |          |
-| empty\_object.json                         |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |          |
-| ls\_example\_query\_features\_v1.0.json    |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) | Passes?? |
-| openc2\_command\_query\_features\_all.json |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |          |
-| query\_features\_all\_v1.0.json            |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |          |
-| poetry\_results.json                       |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |          |
-| results\_empty.json                        |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |          |
-| status\_asbool.json                        |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |          |
-| status\_asstring.json                      |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |          |
-| status\_negative.json                      |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |          |
-| status\_too\_high.json                     |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |          |
-| status\_too\_low.json                      |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |          |
-| statustext\_nostatus.json                  |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |          |
-| unknown\_field.json                        |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |          |
+| File                                       | Changes | Reason | Source                                                   | Note |
+| ------------------------------------------ | ------- | ------ | -------------------------------------------------------- | ---- |
+| empty.json                                 |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| empty\_array.json                          |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| empty\_object.json                         |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| openc2\_command\_query\_features\_all.json |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| query\_features\_all\_v1.0.json            |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| poetry\_results.json                       |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| results\_empty.json                        |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| status\_asbool.json                        |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| status\_asstring.json                      |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| status\_negative.json                      |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| status\_too\_high.json                     |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| status\_too\_low.json                      |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| statustext\_nostatus.json                  |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| unknown\_field.json                        |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
 
 ### Good Responses
 

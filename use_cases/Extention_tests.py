@@ -3,8 +3,7 @@ OpenC2 Extension Use Case Command/Response Pairs
 """
 import unittest
 
-from jsonschema.exceptions import ValidationError
-from .test_setup import SetupTests
+from .test_setup import SetupTests, ValidationError
 from .utils import check_profiles_skip
 
 

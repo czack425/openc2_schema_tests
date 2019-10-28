@@ -24,6 +24,7 @@ file_dir = os.path.dirname(os.path.realpath(__file__))
 log_dir = os.path.join(file_dir, "logs")
 schema_dir = os.path.join(file_dir, "schemas")
 
+
 schemas = dict(
     # SCHEMA_NAME=(SCHEMA_FILE, COMMAND_RECORD, RESPONSE_RECORD),
     # oc2ls_wd14=(f"{schema_dir}/oc2ls-v1.0-wd14.json", "openc2_command", "openc2_response"),
@@ -34,7 +35,7 @@ schemas = dict(
     bberliner_gen=(f"{schema_dir}/oc2ls-v1.0.1-bb_gen.json", "openc2_command", "openc2_response"),
     # dkemp=f"{schema_dir}/oc2ls-v1.0-csprd03_dk.json",
     lang_gen=(f"{schema_dir}/oc2ls-v1.1-lang_gen.json", "openc2_command", "openc2_response"),
-    # slpf_gen=(f"{schema_dir}/oc2slpf-v1.0-refs_gen.json", "openc2_command", "openc2_response"),
+    # slpf_gen=(f"{schema_dir}/oc2slpf-v1.0-refs_gen.json", "openc2_command", "openc2_response")
 )
 
 
@@ -44,7 +45,7 @@ def default_namespace(v) -> Namespace:
         "command": "OpenC2-Command",
         "response": "OpenC2-Response"
     }
-    data.update(dict(zip(data.keys(), (v, ) if isinstance(v, str) else v)))
+    data.update(dict(zip(data.keys(), v if isinstance(v, tuple) else (v, ))))
     return Namespace(**data)
 
 
@@ -71,7 +72,10 @@ if __name__ == "__main__":
         console.h2(f"Running unittests against {name} schema, logfile -> ./logs/{name}.log")
         info = default_namespace(info)
         test_setup.SetupTests.schema_file = info.file
-        test_setup.SetupTests.root_dir = os.path.dirname(info.file)
+        try:
+            test_setup.SetupTests.root_dir = os.path.dirname(info.file)
+        except TypeError:
+            pass
         test_setup.SetupTests.cmd_exp = info.command  # Override for Command record name
         test_setup.SetupTests.rsp_exp = info.response  # Override for Response record name
 

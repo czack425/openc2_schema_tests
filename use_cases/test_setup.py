@@ -2,6 +2,7 @@
 OpenC2 Test case Setup
 """
 import copy
+import inspect
 import json
 import os
 import re
@@ -9,10 +10,11 @@ import unittest
 
 from abc import ABCMeta
 from functools import partialmethod
-from jsonschema import Draft7Validator, ValidationError
+from jsonschema import Draft7Validator, ValidationError as JSON_ValidationError
 from typing import (
     Any,
-    Tuple
+    Tuple,
+    Union
 )
 
 from .utils import (
@@ -20,6 +22,17 @@ from .utils import (
     load_cases,
     ExtendedResolver
 )
+
+# from jadnschema_code.exceptions import ValidationError as Code_ValidationError, FormatError as Code_FormatError
+
+
+ValidationError = tuple([
+    # JSON Validator Errors
+    JSON_ValidationError,
+    # Code Validator Errors
+    # Code_FormatError,
+    # Code_ValidationError
+])
 
 
 class TestMeta(ABCMeta):
@@ -46,7 +59,7 @@ class TestMeta(ABCMeta):
 
 
 class SetupTests(unittest.TestCase, metaclass=TestMeta):
-    schema_file: str = None
+    schema_file: Union[str, type] = None
     root_dir: str = None
     cmd_exp: str = "OpenC2-Command"
     rsp_exp: str = "OpenC2-Response"
@@ -84,11 +97,14 @@ class SetupTests(unittest.TestCase, metaclass=TestMeta):
         :param msg: instance to validate
         :return:
         """
-        schema, resolver = self.loadSchema()
-        validator = Draft7Validator(
-            schema=schema,
-            resolver=resolver
-        )
+        if inspect.isclass(self.schema_file):
+            validator = self.schema_file()
+        else:
+            schema, resolver = self.loadSchema()
+            validator = Draft7Validator(
+                schema=schema,
+                resolver=resolver
+            )
         return validator.validate(msg)
 
     def validate_as(self, msg: Any, _type: str):
@@ -99,6 +115,10 @@ class SetupTests(unittest.TestCase, metaclass=TestMeta):
         :param _type: specific oneOf type to validate as
         :return:
         """
+        if inspect.isclass(self.schema_file):
+            validator = self.schema_file()
+            return validator.validate_as(msg, _type)
+
         schema, resolver = self.loadSchema()
         if "properties" in schema:
             export = schema["properties"].get(_type, None)

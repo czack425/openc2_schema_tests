@@ -3,9 +3,8 @@ OpenC2 Stateless Packet Filtering Profile (SLPF) Use Case Command/Response Pairs
 """
 import unittest
 
-from jsonschema.exceptions import ValidationError
-from .test_setup import SetupTests
-from .utils import check_profiles_skip, load_cases
+from .test_setup import SetupTests, ValidationError
+from .utils import check_profiles_skip
 
 profile = "SLPF-Acme"
 
