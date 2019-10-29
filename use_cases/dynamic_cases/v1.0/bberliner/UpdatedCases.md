@@ -8,8 +8,8 @@
 
 | File                                           | Changes | Reason | Source                                                            | Note                                                        |
 | ---------------------------------------------- | ------- | ------ | ----------------------------------------------------------------- | ----------------------------------------------------------- |
-| action\_notarget.json                          |         |        | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                                             |
 | action\_notarget\_id.json                      |         |        | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                                             |
+| action\_notarget.json                          |         |        | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                                             |
 | action\_unknown.json                           |         |        | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                                             |
 | allow\_ipv4net\_badcidr.json                   |         |        | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                                             |
 | allow\_ipv4net\_badip.json                     |         |        | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                                             |
@@ -159,6 +159,8 @@
 | openc2\_command\_query\_features\_all.json |         |        | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                                                       |
 | query\_features\_all\_badprofile.json      |         |        | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                                                       |
 | results\_empty.json                        |         |        | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) | Moved from good response, response requires a minimum of one property |
+| results\_ext\_multiple.json                |         |        | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) | Moved from good response, 201 is not a valid response for language    |
+| results\_ext\_single.json                  |         |        | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) | Moved from good response, 201 is not a valid response for language    |
 | results\_unknown\_profile.json             |         |        | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                                                       |
 | status\_asbool.json                        |         |        | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                                                       |
 | status\_asdouble.json                      |         |        | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                                                       |
@@ -171,26 +173,24 @@
 
 ### Good Responses
 
-| File                                                | Changes                                | Reason              | Source                                                            | Note                                     |
-| --------------------------------------------------- | -------------------------------------- | ------------------- | ----------------------------------------------------------------- | ---------------------------------------- |
-| ls\_example\_query\_features.json                   |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| ls\_example\_query\_properties\_battery.json        |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| query\_features\_all.json                           | Version: “1.0-draft-2019-02” -\> “1.0” | Language compliance | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| results\_ext\_empty.json                            |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| results\_ext\_multiple.json                         |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) | 201 is not a valid response for language |
-| results\_ext\_single.json                           |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) | 201 is not a valid response for language |
-| results\_slpf\_empty.json                           |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| slpf\_example\_query\_features\_pairs\_example.json |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| slpf\_example\_rule\_number.json                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| status\_102.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| status\_200.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| status\_400.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| status\_401.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| status\_403.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| status\_404.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| status\_500.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| status\_501.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| status\_503.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| status\_and\_status\_text.json                      |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| status\_only\_not\_implemented.json                 |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
-| status\_only\_success.json                          |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |                                          |
+| File                                                | Changes                                | Reason              | Source                                                            | Note |
+| --------------------------------------------------- | -------------------------------------- | ------------------- | ----------------------------------------------------------------- | ---- |
+| ls\_example\_query\_features.json                   |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| ls\_example\_query\_properties\_battery.json        |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| query\_features\_all.json                           | Version: “1.0-draft-2019-02” -\> “1.0” | Language compliance | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| results\_ext\_empty.json                            |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| results\_slpf\_empty.json                           |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| slpf\_example\_query\_features\_pairs\_example.json |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| slpf\_example\_rule\_number.json                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| status\_102.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| status\_200.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| status\_400.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| status\_401.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| status\_403.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| status\_404.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| status\_500.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| status\_501.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| status\_503.json                                    |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| status\_and\_status\_text.json                      |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| status\_only\_not\_implemented.json                 |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |
+| status\_only\_success.json                          |                                        |                     | [Brian Berliner](https://github.com/bberliner/openc2-json-schema) |      |

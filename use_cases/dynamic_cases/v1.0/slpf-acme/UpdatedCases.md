@@ -356,13 +356,13 @@
 
 ### Good Responses
 
-| File                                                | Changes              | Reason                      | Source                                                   | Note |
-| --------------------------------------------------- | -------------------- | --------------------------- | -------------------------------------------------------- | ---- |
-| ls\_example\_query\_properties\_battery.json        | "x\_esm" -\> "x-esm" | extensions are '-' not '\_' | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| query\_features\_all\_badprofile.json               |                      |                             | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| results\_ext\_empty.json                            |                      |                             | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| results\_ext\_multiple.json                         |                      |                             | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| results\_ext\_single.json                           |                      |                             | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| results\_slpf\_empty.json                           |                      |                             | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| slpf\_example\_query\_features\_pairs\_example.json |                      |                             | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| slpf\_example\_rule\_number.json                    |                      |                             | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| File                                                | Changes              | Reason                      | Source                                                   | Note                                        |
+| --------------------------------------------------- | -------------------- | --------------------------- | -------------------------------------------------------- | ------------------------------------------- |
+| ls\_example\_query\_properties\_battery.json        | "x\_esm" -\> "x-esm" | extensions are '-' not '\_' | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                             |
+| query\_features\_all\_badprofile.json               |                      |                             | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                             |
+| results\_ext\_empty.json                            |                      |                             | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                             |
+| results\_ext\_multiple.json                         |                      |                             | [Oasis](https://github.com/oasis-open/openc2-custom-aps) | Status 201 is not valid under V1.0 language |
+| results\_ext\_single.json                           |                      |                             | [Oasis](https://github.com/oasis-open/openc2-custom-aps) | Status 201 is not valid under V1.0 language |
+| results\_slpf\_empty.json                           |                      |                             | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                             |
+| slpf\_example\_query\_features\_pairs\_example.json |                      |                             | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                             |
+| slpf\_example\_rule\_number.json                    |                      |                             | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                             |

@@ -151,21 +151,21 @@
 
 ### Good Responses
 
-| File                                  | Changes                                | Reason              | Source                                                   | Note |
-| ------------------------------------- | -------------------------------------- | ------------------- | -------------------------------------------------------- | ---- |
-| ls\_example\_query\_features.json     |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| query\_features\_all.json             | version: "1.0-draft-2019-02" -\> "1.0" | language compliance | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| query\_features\_all\_badprofile.json | version: "1.0-draft-2019-02" -\> "1.0" | language compliance | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| status\_102.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| status\_200.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| status\_400.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| status\_401.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| status\_403.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| status\_404.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| status\_500.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| status\_501.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| status\_503.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| status\_and\_status\_text.json        |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| status\_asdouble.json                 |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| status\_only\_not\_implemented.json   |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
-| status\_only\_success.json            |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| File                                  | Changes                                | Reason              | Source                                                   | Note                                 |
+| ------------------------------------- | -------------------------------------- | ------------------- | -------------------------------------------------------- | ------------------------------------ |
+| ls\_example\_query\_features.json     |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                      |
+| query\_features\_all.json             | version: "1.0-draft-2019-02" -\> "1.0" | language compliance | [Oasis](https://github.com/oasis-open/openc2-custom-aps) | Extensions are slpf or prefixed ‘x-‘ |
+| query\_features\_all\_badprofile.json | version: "1.0-draft-2019-02" -\> "1.0" | language compliance | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                      |
+| status\_102.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                      |
+| status\_200.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                      |
+| status\_400.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                      |
+| status\_401.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                      |
+| status\_403.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                      |
+| status\_404.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                      |
+| status\_500.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                      |
+| status\_501.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                      |
+| status\_503.json                      |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                      |
+| status\_and\_status\_text.json        |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                      |
+| status\_asdouble.json                 |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                      |
+| status\_only\_not\_implemented.json   |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                      |
+| status\_only\_success.json            |                                        |                     | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |                                      |
