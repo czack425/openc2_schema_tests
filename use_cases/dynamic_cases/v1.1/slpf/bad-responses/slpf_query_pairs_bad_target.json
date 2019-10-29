@@ -13,6 +13,9 @@
       "query": [
         "features"
       ],
+      "delete": [
+        "slpf:rule_number"
+      ],
       "update": [
         "file",
         "uri"

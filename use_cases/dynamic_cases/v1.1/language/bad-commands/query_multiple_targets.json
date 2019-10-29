@@ -1,7 +1,11 @@
 {
   "action": "query",
   "target": {
-    "features": [ "versions" ],
-    "properties": [ "some_property" ]
+    "features": [
+      "versions"
+    ],
+    "properties": [
+      "some_property"
+    ]
   }
 }

@@ -8,7 +8,7 @@
   },
   "args": {
     "slpf": {
-      "drop_process":  "false_ack",
+      "drop_process": "false_ack",
       "direction": "egress"
     }
   },

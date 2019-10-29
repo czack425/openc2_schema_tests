@@ -2,11 +2,13 @@
 Custom JSON Schema resolver
 """
 import colorama
+import copy
 import io
 import json
 import os
 import re
 import sys
+import unittest
 
 from jsonschema import RefResolver
 from jsonschema.compat import urldefrag
@@ -213,6 +215,79 @@ class FrozenDict(ObjectDict):
     setdefault = _immutable
 
 
+class SchemaTestResults(unittest.TextTestResult):
+    _testReport = {}
+
+    def getTestsReport(self, raw: bool = False) -> Dict[str, Dict[str, Any]]:
+        """
+        Returns the run tests as a list of the form of a dict
+        """
+        rtn = copy.deepcopy(self._testReport)
+
+        for p in rtn:
+            rtn[p]["total"] = len({f for t in rtn[p].values() for f in t})
+
+            if not raw:
+                for t in rtn[p]:
+                    if t in ("error", "failure"):
+                        rtn[p][t] = {k: rtn[p][t][k] for k in {*rtn[p][t].keys()} - {*rtn[p].get("success", {}).keys()}}
+
+        rtn["stats"] = dict(
+            total=sum([rtn[p].get("total", 0) for p in rtn]),
+            error=sum([len(rtn[p].get("error", {})) for p in rtn]),
+            failure=sum([len(rtn[p].get("failure", {})) for p in rtn]),
+            skipped=sum([len(rtn[p].get("skipped", {})) for p in rtn]),
+            expected_failure=sum([len(rtn[p].get("expected_failure", {})) for p in rtn]),
+            unexpected_success=sum([len(rtn[p].get("unexpected_success", {})) for p in rtn]),
+        )
+
+        def toFrozen(d: Any):
+            r = d
+            if isinstance(d, dict):
+                return FrozenDict({k: toFrozen(v) for k, v in d.items()})
+
+            if isinstance(d, (list, tuple)):
+                return tuple(FrozenDict(i) for i in d)
+
+            return r
+
+        return toFrozen(rtn)
+
+    def addError(self, test: unittest.case.TestCase, err) -> None:
+        super().addError(test, err)
+        profile = getattr(test, "profile", "Unknown")
+        self._addReport(profile, "error", test)
+
+    def addFailure(self, test: unittest.case.TestCase, err) -> None:
+        super().addFailure(test, err)
+        profile = getattr(test, "profile", "Unknown")
+        self._addReport(profile, "failure", test)
+
+    def addSuccess(self, test: unittest.case.TestCase) -> None:
+        super().addSuccess(test)
+        profile = getattr(test, "profile", "Unknown")
+        self._addReport(profile, "success", test)
+
+    def addExpectedFailure(self, test: unittest.case.TestCase, err) -> None:
+        super().addExpectedFailure(test, err)
+        profile = getattr(test, "profile", "Unknown")
+        self._addReport(profile, "expected_failure", test)
+
+    def addSkip(self, test: unittest.case.TestCase, reason: str) -> None:
+        super().addSkip(test, reason)
+        profile = getattr(test, "profile", "Unknown")
+        self._addReport(profile, "skipped", test)
+
+    def addUnexpectedSuccess(self, test: unittest.case.TestCase) -> None:
+        super().addUnexpectedSuccess(test)
+        profile = getattr(test, "profile", "Unknown")
+        self._addReport(profile, "unexpected_success", test)
+
+    # Helper Functions
+    def _addReport(self, profile: str, category: str, test: unittest.case.TestCase) -> None:
+        self._testReport.setdefault(profile, {}).setdefault(category, {})[test._testMethodName] = test
+
+
 class ConsoleStyle:
     def __init__(self, verbose=False, log=None):
         colorama.init()
@@ -277,6 +352,9 @@ class ConsoleStyle:
 
     def h2(self, txt):
         print(self.colorize(f"\n{txt}", "UNDERLINE", "BOLD", "FG_WHITE"))
+
+    def h3(self, txt):
+        print(self.colorize(f"\n{txt}", "UNDERLINE", "BOLD", "FG_MAGENTA"))
 
     def debug(self, txt):
         print(self.colorize(txt, "FG_WHITE"))

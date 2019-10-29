@@ -1,6 +1,6 @@
 {
   "action": "query",
   "target": {
-    "features": [ ]
+    "features": []
   }
 }

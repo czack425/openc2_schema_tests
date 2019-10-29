@@ -38,7 +38,7 @@ ValidationError = tuple([
 class TestMeta(ABCMeta):
     def __new__(mcs, name, bases, namespace):
         new_namespace = dict(namespace)
-        profile = str(new_namespace.pop("profile", None))
+        profile = str(new_namespace.get("profile", None))
         if profile:
             base_cls = bases[0]
 

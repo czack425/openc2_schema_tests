@@ -6,9 +6,15 @@ import unittest
 from .test_setup import SetupTests, ValidationError
 from .utils import check_profiles_skip
 
+profile = "Extension"
 
-@unittest.skipIf(check_profiles_skip("extension"), "Custom Profile tests not specified")
+
+@unittest.skipIf(check_profiles_skip(profile), f"{profile} Profile tests not specified")
 class Extension_UseCases(SetupTests):
+    # Dynamic Validation Variables
+    profile = profile
+
+    # Static Validation Functions
     def test_dod_status_requested(self):
         """
         Query Command

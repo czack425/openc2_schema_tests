@@ -236,7 +236,7 @@
         }
       },
       "patternProperties": {
-        "^slpf:[A-Za-z0-9]\\w+$": {
+        "^(slpf):[A-Za-z0-9]\\w+$": {
           "type": [
             "array",
             "boolean",
@@ -266,13 +266,15 @@
       "additionalProperties": false,
       "minProperties": 1,
       "patternProperties": {
-        "^slpf$": {
+        "^(slpf)$": {
           "type": "object",
-          "description": "Language specification validator for committee approved actuators. In practice actuators should be a static property and this catch all should be removed"
+          "description": "Language specification validator for committee approved actuators. In practice actuators should be a static property and this catch all should be removed",
+          "minProperties": 1
         },
         "^x-[A-Za-z0-9]\\w+$": {
           "type": "object",
-          "description": "Language specification validator for custom actuators. In practice actuators should be a static property and this catch all should be removed"
+          "description": "Language specification validator for custom actuators. In practice actuators should be a static property and this catch all should be removed",
+          "minProperties": 1
         }
       }
     },
@@ -300,13 +302,15 @@
         }
       },
       "patternProperties": {
-        "^slpf$": {
+        "^(slpf)$": {
           "type": "object",
-          "description": "Language specification validator for committee approved args extensions. In practice args extension should be a static property and this catch all should be removed"
+          "description": "Language specification validator for committee approved args extensions. In practice args extension should be a static property and this catch all should be removed",
+          "minProperties": 1
         },
         "^x-[A-Za-z0-9]\\w+$": {
           "type": "object",
-          "description": "Language specification validator for custom args extensions. In practice args extension should be a static property and this catch all should be removed"
+          "description": "Language specification validator for custom args extensions. In practice args extension should be a static property and this catch all should be removed",
+          "minProperties": 1
         }
       }
     },
@@ -388,13 +392,15 @@
         }
       },
       "patternProperties": {
-        "^slpf$": {
+        "^(slpf)$": {
           "type": "object",
-          "description": "Language specification validator for committee approved results extensions. In practice results extension should be a static property and this catch all should be removed"
+          "description": "Language specification validator for committee approved results extensions. In practice results extension should be a static property and this catch all should be removed",
+          "minProperties": 1
         },
         "^x-[A-Za-z0-9]\\w+$": {
           "type": "object",
-          "description": "Language specification validator for custom results extensions. In practice results extension should be a static property and this catch all should be removed"
+          "description": "Language specification validator for custom results extensions. In practice results extension should be a static property and this catch all should be removed",
+          "minProperties": 1
         }
       }
     },
@@ -641,8 +647,8 @@
       "title": "Targets",
       "type": "array",
       "description": "List of Target fields, should be narrowed in practice",
-      "uniqueItems": true,
       "minItems": 1,
+      "uniqueItems": true,
       "items": {
         "type": "string",
         "pattern": "^(artifact|command|device|domain_name|email_addr|features|file|idn_domain_name|idn_email_addr|ipv4_net|ipv6_net|ipv4_connection|ipv6_connection|iri|mac_addr|process|properties|uri|(x-[A-Za-z0-9]\\w+|slpf):[A-Za-z0-9]\\w+)$"
@@ -743,8 +749,7 @@
       "title": "Namespace Identifier",
       "type": "string",
       "description": "A short identifier that refers to a namespace",
-      "minimum": 1,
-      "maximum": 16
+      "format": "uri"
     },
     "Payload": {
       "title": "Payload",

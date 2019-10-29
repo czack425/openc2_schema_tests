@@ -151,7 +151,7 @@
 <td></td>
 <td></td>
 <td><a href="https://github.com/oasis-open/openc2-custom-aps">Oasis</a></td>
-<td></td>
+<td>Should be a response??</td>
 </tr>
 <tr class="odd">
 <td>set_properties_firewall_status.json</td>
@@ -207,9 +207,9 @@
 
 | File                                       | Changes                                | Reason                      | Source                                                   | Note |
 | ------------------------------------------ | -------------------------------------- | --------------------------- | -------------------------------------------------------- | ---- |
-| poetry\_results.json                       |                                        |                             | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
 | query\_features\_all\_badprofile-v1.0.json | Version: “1.0-draft-2019-02" -\> “1.0” | Language compliance         | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
 | results\_ext\_empty.json                   | "x\_acme" -\> "x-acme"                 | extensions are '-' not '\_' | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| results\_poetry.json                       |                                        |                             | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
 
 ### Good Responses
 
@@ -244,14 +244,14 @@
 "x_mycompany" -&gt; "x-mycompany"</td>
 <td>extensions are '-' not '_'</td>
 <td><a href="https://github.com/oasis-open/openc2-custom-aps">Oasis</a></td>
-<td></td>
+<td>201 is not valid within the language</td>
 </tr>
 <tr class="even">
 <td>results_ext_single.json</td>
 <td>"x_mycompany" -&gt; "x-mycompany"</td>
 <td>extensions are '-' not '_'</td>
 <td><a href="https://github.com/oasis-open/openc2-custom-aps">Oasis</a></td>
-<td></td>
+<td>201 is not valid within the language</td>
 </tr>
 </tbody>
 </table>
