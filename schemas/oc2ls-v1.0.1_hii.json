@@ -1,19 +1,20 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://oasis-open.org/openc2/oc2ls/v1.01/schema.json",
-  "title": "oc2ls version 1.01 json schema",
+  "title": "oc2ls version 1.0.1 json schema",
   "type": "object",
   "description": "This schema is intended to validate all possible derived content for the OpenC2 Language Specification version 1.0. It is meant to be used as a template that can be more strictly tuned when creating actuator profile specific schema",
-  "oneOf": [
-    {
+  "additionalProperties": false,
+  "properties": {
+    "OpenC2-Command": {
       "$ref": "#/definitions/OpenC2-Command",
       "description": "A message defined by an Action-Target pair that is sent from a Producer and received by a Consumer"
     },
-    {
+    "OpenC2-Response": {
       "$ref": "#/definitions/OpenC2-Response",
       "description": "A message from a Consumer to a Producer acknowledging a Command or returning the requested resources or status to a previously received Command"
     }
-  ],
+  },
   "definitions": {
     "OpenC2-Command": {
       "title": "OpenC2 Command",
@@ -297,7 +298,7 @@
         },
         "response_requested": {
           "$ref": "#/definitions/Response-Type",
-          "description": "The type of Response required for the Command: none, ack, status, complete"
+          "description": "The type of Response required for the Command: `none`, `ack`, `status`, `complete`"
         }
       },
       "patternProperties": {
@@ -646,7 +647,88 @@
       "uniqueItems": true,
       "items": {
         "type": "string",
-        "pattern": "^(artifact|command|device|domain_name|email_addr|features|file|idn_domain_name|idn_email_addr|ipv4_net|ipv6_net|ipv4_connection|ipv6_connection|iri|mac_addr|process|properties|uri|(x-[A-Za-z0-9]\\w+|slpf):[A-Za-z0-9]\\w+)$"
+        "oneOf": [
+          {
+            "const": "artifact",
+            "description": "An array of bytes representing a file-like object or a link to that object"
+          },
+          {
+            "const": "command",
+            "description": "A reference to a previously issued Command"
+          },
+          {
+            "const": "device",
+            "description": "The properties of a hardware device"
+          },
+          {
+            "const": "domain_name",
+            "description": "A network domain name"
+          },
+          {
+            "const": "email_addr",
+            "description": "A single email address"
+          },
+          {
+            "const": "features",
+            "description": "A set of items used with the query Action to determine an Actuator's capabilities"
+          },
+          {
+            "const": "file",
+            "description": "Properties of a file"
+          },
+          {
+            "const": "idn_domain_name",
+            "description": "An internationalized domain name"
+          },
+          {
+            "const": "idn_email_addr",
+            "description": "A single internationalized email address"
+          },
+          {
+            "const": "ipv4_net",
+            "description": "An IPv4 address range including CIDR prefix length"
+          },
+          {
+            "const": "ipv6_net",
+            "description": "An IPv6 address range including prefix length"
+          },
+          {
+            "const": "ipv4_connection",
+            "description": "A 5-tuple of source and destination IPv4 address ranges, source and destination ports, and protocol"
+          },
+          {
+            "const": "ipv6_connection",
+            "description": "A 5-tuple of source and destination IPv6 address ranges, source and destination ports, and protocol"
+          },
+          {
+            "const": "iri",
+            "description": "An internationalized resource identifier (IRI)"
+          },
+          {
+            "const": "mac_addr",
+            "description": "A Media Access Control (MAC) address - EUI-48 or EUI-64 as defined in [EUI]"
+          },
+          {
+            "const": "process",
+            "description": "Common properties of an instance of a computer program as executed on an operating system"
+          },
+          {
+            "const": "properties",
+            "description": "Data attribute associated with an Actuator"
+          },
+          {
+            "const": "uri",
+            "description": "A uniform resource identifier (URI)"
+          },
+          {
+            "description": "Oasis Approved Target extensions",
+            "pattern": "^(slpf):[A-Za-z0-9]\\w+$"
+          },
+          {
+            "description": "Unapproved Target extensions",
+            "pattern": "^x-[A-Za-z0-9]\\w+:[A-Za-z0-9]\\w+$"
+          }
+        ]
       }
     },
     "Date-Time": {
@@ -801,8 +883,9 @@
       "pattern": "^\\d+\\.\\d+(\\.\\d+)?$"
     },
     "Command-ID": {
-      "title": "Command Identifier",
+      "title": "Command ID",
       "type": "string",
+      "description": "Command Identifier",
       "pattern": "^\\S{0,36}$"
     },
     "Binary": {

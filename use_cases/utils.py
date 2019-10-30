@@ -216,7 +216,11 @@ class FrozenDict(ObjectDict):
 
 
 class SchemaTestResults(unittest.TextTestResult):
-    _testReport = {}
+    _testReport: dict
+
+    def __init__(self, stream, descriptions, verbosity):
+        super().__init__(stream, descriptions, verbosity)
+        self._testReport = {}
 
     def getTestsReport(self, raw: bool = False) -> Dict[str, Dict[str, Any]]:
         """
@@ -227,10 +231,13 @@ class SchemaTestResults(unittest.TextTestResult):
         for p in rtn:
             rtn[p]["total"] = len({f for t in rtn[p].values() for f in t})
 
-            if not raw:
-                for t in rtn[p]:
-                    if t in ("error", "failure"):
-                        rtn[p][t] = {k: rtn[p][t][k] for k in {*rtn[p][t].keys()} - {*rtn[p].get("success", {}).keys()}}
+            if not raw and "error" in rtn[p]:
+                keys = {*rtn[p]["error"].keys()} - {*rtn[p].get("success", {}).keys()}
+                rtn[p]["error"] = {k: rtn[p]["error"][k] for k in keys}
+
+            if not raw and "failure" in rtn[p]:
+                keys = {*rtn[p]["failure"].keys()} - {*rtn[p].get("success", {}).keys()}
+                rtn[p]["failure"] = {k: rtn[p]["failure"][k] for k in keys}
 
         rtn["stats"] = dict(
             total=sum([rtn[p].get("total", 0) for p in rtn]),
