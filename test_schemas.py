@@ -15,17 +15,17 @@ verbose = False
 exitOnFail = False
 
 # Versions to test, should be prefixed as v...
-version = "v1.0"
+version = "v1.0.1"
 
 # Add profiles to test here
 profiles = [
-    # "Language",
+    "Language",
     # "Extension",
     # "General",
-    # "SLPF",
-    # "SLPF-Acme",
+    "SLPF",
+    "SLPF-Acme",
     # Non Profile Specific
-    "BBerliner"
+    # "BBerliner"
 ]
 
 file_dir = os.path.dirname(os.path.realpath(__file__))
@@ -35,17 +35,13 @@ schema_dir = os.path.join(file_dir, "schemas")
 
 schemas = dict(
     # SCHEMA_NAME=(SCHEMA_FILE, COMMAND_RECORD, RESPONSE_RECORD),
-    # oc2ls_wd14=(f"{schema_dir}/oc2ls-v1.0-wd14.json", "openc2_command", "openc2_response"),
     oc2ls_v1_0=f"{schema_dir}/oc2ls-v1.0.1_hii.json",
-    # oc2ls_v1_1_update=f"{schema_dir}/oc2ls-v1.1-wd14_update.json",
-    # romano=f"{schema_dir}/romanojd/message.json",
-    # bberliner=f"{schema_dir}/bberliner/combined_schema.json",
-    bberliner_gen=(f"{schema_dir}/oc2ls-v1.0.1-bb_gen.json", "openc2_command", "openc2_response"),
-    # dkemp=f"{schema_dir}/oc2ls-v1.0-csprd03_dk.json",
-    lang_gen=(f"{schema_dir}/oc2ls-v1.0.1_gen.json", "openc2_command", "openc2_response"),
+    romano=(f"{schema_dir}/romanojd/message.json", "OpenC2_Command", "OpenC2_Response"),
+    bberliner=(f"{schema_dir}/bberliner/combined_schema.json", "command", "response"),
+    bberliner_gen=f"{schema_dir}/oc2ls-v1.0.1-bb_gen.json",
     # Profile Schemas
-    # oc2slpf_v1_0=f"{schema_dir}/oc2slpf-v1.0.json",
-    # slpf_gen=(f"{schema_dir}/oc2slpf-v1.0-refs_gen.json", "openc2_command", "openc2_response"),
+    oc2slpf_v1_0=f"{schema_dir}/oc2slpf-v1.0.json",
+    oc2slpf_v1_0_gen=f"{schema_dir}/oc2slpf-v1.0_gen.json",
 )
 
 tests_format = (
@@ -61,8 +57,8 @@ tests_format = (
 def default_namespace(v) -> Namespace:
     data = {
         "file": f"{schema_dir}/oc2ls-v1.0-wd14_update.json",
-        "command": "OpenC2-Command",
-        "response": "OpenC2-Response"
+        "command": "openc2_command",
+        "response": "openc2_response"
     }
     data.update(dict(zip(data.keys(), v if isinstance(v, tuple) else (v, ))))
     return Namespace(**data)

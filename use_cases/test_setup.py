@@ -61,8 +61,8 @@ class TestMeta(ABCMeta):
 class SetupTests(unittest.TestCase, metaclass=TestMeta):
     schema_file: Union[str, type] = None
     root_dir: str = None
-    cmd_exp: str = "OpenC2-Command"
-    rsp_exp: str = "OpenC2-Response"
+    cmd_exp: str = "openc2_command"
+    rsp_exp: str = "openc2_command"
     # Override in subclass
     profile: str
 
@@ -127,7 +127,7 @@ class SetupTests(unittest.TestCase, metaclass=TestMeta):
                 return self.validate(msg)
 
         elif "oneOf"in schema:
-            export = [e for e in schema["oneOf"] if _type == re.sub(r"#/definitions/", "", e.get("$ref", ""))]
+            export = [e for e in schema["oneOf"] if _type == re.sub(r"(.*?#/definitions/|\.json)", "", e.get("$ref", ""))]
             if export:
                 tmp_schema = copy.deepcopy(schema)
                 del tmp_schema["oneOf"]

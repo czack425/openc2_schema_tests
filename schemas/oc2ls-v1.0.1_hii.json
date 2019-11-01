@@ -6,11 +6,11 @@
   "description": "This schema is intended to validate all possible derived content for the OpenC2 Language Specification version 1.0. It is meant to be used as a template that can be more strictly tuned when creating actuator profile specific schema",
   "additionalProperties": false,
   "properties": {
-    "OpenC2-Command": {
+    "openc2_command": {
       "$ref": "#/definitions/OpenC2-Command",
       "description": "A message defined by an Action-Target pair that is sent from a Producer and received by a Consumer"
     },
-    "OpenC2-Response": {
+    "openc2_response": {
       "$ref": "#/definitions/OpenC2-Response",
       "description": "A message from a Consumer to a Producer acknowledging a Command or returning the requested resources or status to a previously received Command"
     }
@@ -575,7 +575,7 @@
       "title": "MAC Address",
       "type": "string",
       "description": "Media Access Control / Extended Unique Identifier address - EUI-48 or EUI-64 as defined in [EUI]",
-      "pattern": "^([0-9a-fA-F]{2}[:-]){5}[0-9a-fA-F]{2}(([:-][0-9a-fA-F]){2})?$"
+      "pattern": "^([0-9A-Fa-f]{2}[:-]){5}[0-9A-Fa-f]{2}(([:-][0-9A-Fa-f]{2}){2})?$"
     },
     "Process": {
       "title": "Process",
@@ -827,8 +827,7 @@
       "type": "string",
       "description": "A short identifier that refers to a namespace",
       "minLength": 1,
-      "maxLength": 16,
-      "pattern": "^(slpf|x-[A-Za-z0-9]\\w+)$"
+      "maxLength": 16
     },
     "Payload": {
       "title": "Payload",
@@ -879,19 +878,18 @@
     "Version": {
       "title": "Version",
       "type": "string",
-      "description": "Major.Minor version number",
-      "pattern": "^\\d+\\.\\d+(\\.\\d+)?$"
+      "description": "Major.Minor version number"
+    },
+    "Binary": {
+      "title": "Binary",
+      "type": "string",
+      "contentEncoding": "base64"
     },
     "Command-ID": {
       "title": "Command ID",
       "type": "string",
       "description": "Command Identifier",
       "pattern": "^\\S{0,36}$"
-    },
-    "Binary": {
-      "title": "Binary",
-      "type": "string",
-      "contentEncoding": "base64"
     }
   }
 }

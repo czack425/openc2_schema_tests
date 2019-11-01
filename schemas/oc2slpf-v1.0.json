@@ -4,16 +4,17 @@
   "title": "oc2ls version 1.01 json schema",
   "type": "object",
   "description": "This schema is intended to validate all possible content for the OpenC2 Stateless Packet Filter version 1.0",
-  "oneOf": [
-    {
+  "additionalProperties": false,
+  "properties": {
+    "openc2_command": {
       "$ref": "#/definitions/OpenC2-Command",
       "description": "A message defined by an Action-Target pair that is sent from a Producer and received by a Consumer"
     },
-    {
+    "openc2_response": {
       "$ref": "#/definitions/OpenC2-Response",
       "description": "A message from a Consumer to a Producer acknowledging a Command or returning the requested resources or status to a previously received Command"
     }
-  ],
+  },
   "definitions": {
     "OpenC2-Command": {
       "title": "OpenC2 Command",
