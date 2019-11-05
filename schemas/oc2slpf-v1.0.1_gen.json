@@ -1,5 +1,3 @@
-/* Generated from schema\oc2slpf-v1.0.1.jadn, Thu Oct 31 17:38:01 2019 */
-
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://oasis-open.org/openc2/oc2slpf/v1.0.1",
@@ -235,9 +233,9 @@
           "$ref": "#/definitions/URI",
           "description": "A uniform resource identifier (URI)."
         },
-        "slpf": {
-          "$ref": "#/definitions/P-Target",
-          "description": "Targets defined in the SLPF actuator profile"
+        "slpf:rule_number": {
+          "$ref": "#/definitions/Rule-ID",
+          "description": "Immutable identifier assigned when a rule is created. Identifies a rule to be deleted"
         }
       }
     },
@@ -864,20 +862,6 @@
       "title": "Version",
       "type": "string",
       "description": "Major.Minor version number"
-    },
-    "P-Target": {
-      "title": "P Target",
-      "type": "object",
-      "description": "SLPF targets",
-      "additionalProperties": false,
-      "minProperties": 1,
-      "maxProperties": 1,
-      "properties": {
-        "rule_number": {
-          "$ref": "#/definitions/Rule-ID",
-          "description": "Immutable identifier assigned when a rule is created. Identifies a rule to be deleted"
-        }
-      }
     },
     "Rule-ID": {
       "title": "Rule ID",

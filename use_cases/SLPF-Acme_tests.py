@@ -6,7 +6,7 @@ import unittest
 from .test_setup import SetupTests, ValidationError
 from .utils import check_profiles_skip
 
-profile = "SLPF-Acme"
+profile = "SLPF+Acme"
 
 
 @unittest.skipIf(check_profiles_skip(profile), f"{profile} Profile tests not specified")

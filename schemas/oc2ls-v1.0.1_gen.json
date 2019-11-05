@@ -1,5 +1,3 @@
-/* Generated from schema\oc2ls-v1.0.1.jadn, Thu Oct 31 17:38:01 2019 */
-
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://oasis-open.org/openc2/oc2ls/v1.0.1",
@@ -374,86 +372,91 @@
     "Targets": {
       "title": "Targets",
       "type": "array",
-      "description": "List of Target types",
+      "description": "List of JSON Pointers to Target types",
       "uniqueItems": true,
       "minItems": 1,
       "maxItems": 100,
       "items": {
-        "oneOf": [
-          {
-            "const": "artifact",
-            "description": "An array of bytes representing a file-like object or a link to that object."
-          },
-          {
-            "const": "command",
-            "description": "A reference to a previously issued Command."
-          },
-          {
-            "const": "device",
-            "description": "The properties of a hardware device."
-          },
-          {
-            "const": "domain_name",
-            "description": "A network domain name."
-          },
-          {
-            "const": "email_addr",
-            "description": "A single email address."
-          },
-          {
-            "const": "features",
-            "description": "A set of items used with the query Action to determine an Actuator's capabilities."
-          },
-          {
-            "const": "file",
-            "description": "Properties of a file."
-          },
-          {
-            "const": "idn_domain_name",
-            "description": "An internationalized domain name."
-          },
-          {
-            "const": "idn_email_addr",
-            "description": "A single internationalized email address."
-          },
-          {
-            "const": "ipv4_net",
-            "description": "An IPv4 address range including CIDR prefix length."
-          },
-          {
-            "const": "ipv6_net",
-            "description": "An IPv6 address range including prefix length."
-          },
-          {
-            "const": "ipv4_connection",
-            "description": "A 5-tuple of source and destination IPv4 address ranges, source and destination ports, and protocol"
-          },
-          {
-            "const": "ipv6_connection",
-            "description": "A 5-tuple of source and destination IPv6 address ranges, source and destination ports, and protocol"
-          },
-          {
-            "const": "iri",
-            "description": "An internationalized resource identifier (IRI)."
-          },
-          {
-            "const": "mac_addr",
-            "description": "A Media Access Control (MAC) address - EUI-48 or EUI-64 as defined in [[EUI]](#eui)"
-          },
-          {
-            "const": "process",
-            "description": "Common properties of an instance of a computer program as executed on an operating system."
-          },
-          {
-            "const": "properties",
-            "description": "Data attribute associated with an Actuator"
-          },
-          {
-            "const": "uri",
-            "description": "A uniform resource identifier (URI)."
-          }
-        ]
+        "$ref": "#/definitions/Target$Pointer"
       }
+    },
+    "Target$Pointer": {
+      "title": "Target$Pointer",
+      "type": "string",
+      "oneOf": [
+        {
+          "const": "artifact",
+          "description": ""
+        },
+        {
+          "const": "command",
+          "description": ""
+        },
+        {
+          "const": "device",
+          "description": ""
+        },
+        {
+          "const": "domain_name",
+          "description": ""
+        },
+        {
+          "const": "email_addr",
+          "description": ""
+        },
+        {
+          "const": "features",
+          "description": ""
+        },
+        {
+          "const": "file",
+          "description": ""
+        },
+        {
+          "const": "idn_domain_name",
+          "description": ""
+        },
+        {
+          "const": "idn_email_addr",
+          "description": ""
+        },
+        {
+          "const": "ipv4_net",
+          "description": ""
+        },
+        {
+          "const": "ipv6_net",
+          "description": ""
+        },
+        {
+          "const": "ipv4_connection",
+          "description": ""
+        },
+        {
+          "const": "ipv6_connection",
+          "description": ""
+        },
+        {
+          "const": "iri",
+          "description": ""
+        },
+        {
+          "const": "mac_addr",
+          "description": ""
+        },
+        {
+          "const": "process",
+          "description": ""
+        },
+        {
+          "const": "properties",
+          "description": ""
+        },
+        {
+          "const": "uri",
+          "description": ""
+        }
+      ]
     },
     "Status-Code": {
       "title": "Status Code",
@@ -823,20 +826,6 @@
         {
           "const": "sctp",
           "description": "Stream Control Transmission Protocol - [[RFC4960]](#rfc4960)"
-        }
-      ]
-    },
-    "Message-Type": {
-      "title": "Message Type",
-      "type": "string",
-      "oneOf": [
-        {
-          "const": "command",
-          "description": "The Message content is an OpenC2 Command"
-        },
-        {
-          "const": "response",
-          "description": "The Message content is an OpenC2 Response"
         }
       ]
     },

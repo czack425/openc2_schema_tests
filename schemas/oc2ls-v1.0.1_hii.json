@@ -875,6 +875,12 @@
         }
       ]
     },
+    "Command-ID": {
+      "title": "Command ID",
+      "type": "string",
+      "description": "Command Identifier",
+      "pattern": "^\\S{0,36}$"
+    },
     "Version": {
       "title": "Version",
       "type": "string",
@@ -884,12 +890,6 @@
       "title": "Binary",
       "type": "string",
       "contentEncoding": "base64"
-    },
-    "Command-ID": {
-      "title": "Command ID",
-      "type": "string",
-      "description": "Command Identifier",
-      "pattern": "^\\S{0,36}$"
     }
   }
 }

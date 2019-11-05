@@ -11,6 +11,7 @@
 | create\_poetry.json   |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
 | long\_name\_x244.json |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
 | long\_name\_x80.json  |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
+| set\_castle.json      |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
 
 ### Good Commands
 
@@ -33,6 +34,7 @@
 
 | File                                 | Changes | Reason | Source                                                   | Note |
 | ------------------------------------ | ------- | ------ | -------------------------------------------------------- | ---- |
+| results\_castle.json                 |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
 | results\_ext\_multiple\_201.json     |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
 | results\_ext\_single-201.json        |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |
 | results\_poetry.json                 |         |        | [Oasis](https://github.com/oasis-open/openc2-custom-aps) |      |

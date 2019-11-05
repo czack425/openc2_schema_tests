@@ -20,12 +20,12 @@ version = "v1.0.1"
 # Add profiles to test here
 profiles = [
     "Language",
-    # "Extension",
-    # "General",
+    "Extension",
+    "General",
     "SLPF",
     "SLPF-Acme",
     # Non Profile Specific
-    # "BBerliner"
+    "BBerliner"
 ]
 
 file_dir = os.path.dirname(os.path.realpath(__file__))
@@ -35,13 +35,14 @@ schema_dir = os.path.join(file_dir, "schemas")
 
 schemas = dict(
     # SCHEMA_NAME=(SCHEMA_FILE, COMMAND_RECORD, RESPONSE_RECORD),
-    oc2ls_v1_0=f"{schema_dir}/oc2ls-v1.0.1_hii.json",
-    romano=(f"{schema_dir}/romanojd/message.json", "OpenC2_Command", "OpenC2_Response"),
-    bberliner=(f"{schema_dir}/bberliner/combined_schema.json", "command", "response"),
-    bberliner_gen=f"{schema_dir}/oc2ls-v1.0.1-bb_gen.json",
+    oc2ls_v1_0_1=f"{schema_dir}/oc2ls-v1.0.1_hii.json",
+    oc2ls_v1_0_1_gen=f"{schema_dir}/oc2ls-v1.0.1_gen.json",
+    # romano=(f"{schema_dir}/romanojd/message.json", "OpenC2_Command", "OpenC2_Response"),
+    # bberliner=(f"{schema_dir}/bberliner/combined_schema.json", "command", "response"),
+    # bberliner_gen=f"{schema_dir}/oc2ls-v1.0.1-bb_gen.json",
     # Profile Schemas
-    oc2slpf_v1_0=f"{schema_dir}/oc2slpf-v1.0.json",
-    oc2slpf_v1_0_gen=f"{schema_dir}/oc2slpf-v1.0_gen.json",
+    # oc2slpf_v1_0_1=f"{schema_dir}/oc2slpf-v1.0.1_hii.json",
+    # oc2slpf_v1_0_1_gen=f"{schema_dir}/oc2slpf-v1.0.1_gen.json",
 )
 
 tests_format = (
